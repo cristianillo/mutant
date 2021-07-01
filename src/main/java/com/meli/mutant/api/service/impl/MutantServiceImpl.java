@@ -1,29 +1,32 @@
 package com.meli.mutant.api.service.impl;
 
-import com.meli.mutant.api.dto.DnaStatus;
+import com.meli.mutant.api.model.DnaStatus;
+import com.meli.mutant.api.service.Dna;
 import com.meli.mutant.api.service.MutantService;
+import com.meli.mutant.api.service.ResultMutantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MutantServiceImpl implements MutantService {
 
     @Autowired
-    private HorizontalDnaImpl horizontalDna;
+    private List<Dna> dnaConfig;
 
     @Autowired
-    private VerticalDnaImpl verticalDna;
+    private ResultMutantService resultMutantService;
 
     @Override
     public Boolean isMutant(String[] dna) {
         String [][] dnaSeparateInRow = separateInRows(dna);
-        List<String> resultDnaList = new ArrayList<>();
-        resultDnaList.add(horizontalDna.inspectDna(dnaSeparateInRow).name());
-        resultDnaList.add(verticalDna.inspectDna(dnaSeparateInRow).name());
-        return resultDnaList.contains(DnaStatus.MUTANT.name());
+        List<String> resultDnaList = dnaConfig.stream().map(dnaMode -> dnaMode.inspectDna(dnaSeparateInRow).name()).collect(Collectors.toList());
+        Boolean isMutant = resultDnaList.contains(DnaStatus.MUTANT.name());
+        saveResult(isMutant);
+        return isMutant;
     }
 
     private String[][] separateInRows(String[] dna) {
@@ -34,6 +37,15 @@ public class MutantServiceImpl implements MutantService {
             rouCounter++;
         }
         return m;
+    }
+
+    @Async
+    private void saveResult(Boolean isMutant) {
+        if (Boolean.TRUE.equals(isMutant)){
+            resultMutantService.storeResult(DnaStatus.MUTANT);
+        } else {
+            resultMutantService.storeResult(DnaStatus.HUMAN);
+        }
     }
 
 }

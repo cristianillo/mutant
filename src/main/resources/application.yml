@@ -1,2 +1,15 @@
 server:
   port : 8099
+
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://mutant.cszfjdg6ufe2.us-west-2.rds.amazonaws.com/mutant_operation
+    username: postgres
+    password: Meli2021GO*
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgresPlusDialect
+    hibernate:
+      ddl-auto: update

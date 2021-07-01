@@ -1,4 +1,4 @@
-package com.meli.mutant.api.dto;
+package com.meli.mutant.api.model;
 
 public enum DnaStatus {
     MUTANT,
