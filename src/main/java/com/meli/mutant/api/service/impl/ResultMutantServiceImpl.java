@@ -14,6 +14,9 @@ public class ResultMutantServiceImpl implements ResultMutantService {
     @Autowired
     private ResultMutantRepository resultMutantRepository;
 
+    /**
+     * @see ResultMutantService#storeResult(DnaStatus)
+     */
     @Override
     public void storeResult(DnaStatus status){
         ResultMutant resultOfOperation = new ResultMutant();
@@ -21,6 +24,9 @@ public class ResultMutantServiceImpl implements ResultMutantService {
         resultMutantRepository.save(resultOfOperation);
     }
 
+    /**
+     * @see ResultMutantService#getStatistics()
+     */
     @Override
     public StatisticResponse getStatistics() {
         long mutantCount = resultMutantRepository.countByStatus(DnaStatus.MUTANT);

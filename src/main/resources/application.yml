@@ -4,9 +4,11 @@ server:
 spring:
   datasource:
     platform: postgres
-    url: jdbc:postgresql://mutant.cszfjdg6ufe2.us-west-2.rds.amazonaws.com/mutant_operation
+    #url: jdbc:postgresql://mutant.cszfjdg6ufe2.us-west-2.rds.amazonaws.com/mutant_operation
+    url: jdbc:postgresql://localhost/mutant_operation
     username: postgres
-    password: Meli2021GO*
+    #password: Meli2021GO*
+    password: postgres
   jpa:
     properties:
       hibernate:

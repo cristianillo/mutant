@@ -1,8 +1,6 @@
 package com.meli.mutant.api.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -10,9 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import static javax.persistence.EnumType.STRING;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class ResultMutant {
     @Id

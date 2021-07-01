@@ -5,6 +5,11 @@ import com.meli.mutant.api.service.Dna;
 
 public class HorizontalDna implements Dna {
 
+    /**
+     * Determina la secuencia de caracteres de manera horizontal
+     * @param dnaMatrix matriz con la información dna.
+     * @return Enum de tipo DnaStatus
+     */
     @Override
     public DnaStatus inspectDna(String[][] dnaMatrix) {
         int width =  dnaMatrix[0].length;
@@ -27,10 +32,5 @@ public class HorizontalDna implements Dna {
             }
         }
         return DnaStatus.HUMAN;
-    }
-
-    @Override
-    public DnaStatus getInspectDnaResult() {
-        return null;
     }
 }

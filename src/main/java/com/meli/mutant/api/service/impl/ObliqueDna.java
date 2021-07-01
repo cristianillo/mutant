@@ -4,6 +4,11 @@ import com.meli.mutant.api.model.DnaStatus;
 import com.meli.mutant.api.service.Dna;
 
 public class ObliqueDna implements Dna {
+    /**
+     * Determina la secuencia de caracteres de manera oblicua desde la esquina superior izquierda de la matriz
+     * @param dnaMatrix matriz con la información dna.
+     * @return Enum de tipo DnaStatus
+     */
     @Override
     public DnaStatus inspectDna(String[][] dnaMatrix) {
         int width = dnaMatrix[0].length;
@@ -29,10 +34,5 @@ public class ObliqueDna implements Dna {
             }
         }
         return DnaStatus.HUMAN;
-    }
-
-    @Override
-    public DnaStatus getInspectDnaResult() {
-        return null;
     }
 }

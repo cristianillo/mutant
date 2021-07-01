@@ -5,6 +5,4 @@ import com.meli.mutant.api.model.DnaStatus;
 public interface Dna {
 
     DnaStatus inspectDna(String [][] dnaMatrix);
-
-    DnaStatus getInspectDnaResult();
 }
