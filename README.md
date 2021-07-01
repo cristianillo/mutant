@@ -23,12 +23,12 @@ Para la ejecución de la aplicación en ambientes locales se debe tener instalad
 - 1) Se debe descargar el proyecto del repositorio remoto de git
 
 ```sh
-$ git clone https://github.com/cristianillo/quasar-operation.git
+$ git clone https://github.com/cristianillo/mutant.git
 ```
-- 2) Acceder a la carpeta `quasar-operation`.
+- 2) Acceder a la carpeta `mutant`.
 
 ```sh
-$ cd quasar-operation
+$ cd mutant
 ```
 - 3) Compilar la aplicación con el siguiente comando:
 
@@ -44,99 +44,39 @@ $ mvn spring-boot:run
 ### Contenido de la aplicación
 
 El utilizó Swagger para la documentación básica de los métodos y el endpoint es el siguiente:
-- [http://quasaroperationservice-env.eba-tdqmq4ia.us-west-2.elasticbeanstalk.com/swagger-ui.html][endpoint-swagger]
-
-La aplicación existe un archivo de configucarión YML para modificar la información de los satelites que hacen parte de la aplicación.
-
-```yml
-application:
-  satellites:
-    -
-      name: 'kenobi'
-      position: 
-        x: -500
-        y: -200
-    -
-      name: 'skywalker'
-      position: 
-        x: 100
-        y: -100
-    -
-      name: 'sato'
-      position:
-        x: 500
-        y: 100
-```
+- [http://mutantoperation-env.eba-mhevdh3a.us-west-2.elasticbeanstalk.com/swagger-ui.html][endpoint-swagger]
 
 El servicio soporta los siguientes métodos:
-##### POST /topsecret/
-Se encarga de calcular la posición de la nave a partir de las distancias teniendo en cuenta la posición de los satelites *Kenobi*, *Skywalker* y *Sato*.
-- EndPoint: http://quasaroperationservice-env.eba-tdqmq4ia.us-west-2.elasticbeanstalk.com/topsecret/
+##### POST /mutant/
+Determina si el arreglo de ADN es mutante o humano.
+- EndPoint: http://mutantoperation-env.eba-mhevdh3a.us-west-2.elasticbeanstalk.com/mutant/
 
 Request del método:
 
 ```json
 {
-   "satellites":[
-      {
-         "distance":824.54,
-         "message":[
-            "SOS", "", "", "un", "mensaje", "", "auxilio"
-         ],
-         "name":"kenobi"
-      },
-      {
-         "distance":382.30,
-         "message":[
-            "", "este", "", "un", "", "de", ""
-         ],
-         "name":"skywalker"
-      },
-      {
-         "distance":275.18,
-         "message":[
-            "SOS", "", "es", "", "mensaje", "", "auxilio"
-         ],
-         "name":"sato"
-      }
-   ]
-}
-```
-
-##### POST /topsecret_split/{satellite_name}
-Agregar información de la distancia, el mensaje y el nombre del satelite `satellite_name` para que el método GET pueda calcular la pisición de la nave.
-
-- EndPoint: http://quasaroperationservice-env.eba-tdqmq4ia.us-west-2.elasticbeanstalk.com/topsecret_split/{satellite_name}
-
-Request del método:
-
-```json
-{
-      "distance":382.30,
-      "message":[
-            "", "este", "", "un", "", "de", ""
-         ]
-}
-```
-
-Request del método con el mensaje de error cuando no encuentra el satelite creado en la aplicacion:
-
-```json
-{
-  "message": "Satellite not found to add information"
+  "dna":[
+    "ATGCGA",
+    "CAGTGC",
+    "TTATGT",
+    "AGAAGG",
+    "CCCCTA",
+    "TCACTG"
+  ]
 }
 ```
 
 ##### GET /topsecret_split/
-Se encarga de calcular la posición de acuerdo a la información agregada con el método POST. En el caso que no se pueda calcular la posición por falta de información se mostrara un mensaje de error.
+Se encarga de contar el numero de humanos y mutantes que se han procesado.
 
-- EndPoint: http://quasaroperationservice-env.eba-tdqmq4ia.us-west-2.elasticbeanstalk.com/topsecret_split/
+- EndPoint: http://mutantoperation-env.eba-mhevdh3a.us-west-2.elasticbeanstalk.com/stats
 
+Respuesta del método:
 ```json
 {
-  "code": 404,
-  "description": "There is not enough satellites information to calculate the ship position. 
-  				Should be three diferent satellites information"
+  "count_human_dna": 100,
+  "count_mutant_dna": 40,
+  "ratio": 0.4
 }
 ```
 
