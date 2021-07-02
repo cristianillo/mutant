@@ -6,8 +6,11 @@
 ```
 
 # Operación Mutante
+
 Proyecto que detecta si un humano es mutante basándose en su secuencia de ADN basado en Java 8 + Spring Boot.
-Se recibe como parametro un array de String de NXN con la secuencia de ADN con los siguientes caracteres (A,T,C,G). Un humano es mutante, si se encuentra más de una secuencia de cuatro letras iguales, de forma oblicua, horizontal o vertical.
+Se recibe como parametro un array de String de NXN con la secuencia de ADN con los siguientes caracteres (A,T,C,G).
+Un humano es mutante, si se encuentra más de una secuencia de cuatro letras iguales, de forma oblicua, horizontal o vertical.
+
 ---
 ### Prerequisitos
 Para la ejecución de la aplicación en ambientes locales se debe tener instalado los siguientes programas:
