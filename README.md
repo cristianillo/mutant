@@ -44,12 +44,12 @@ $ mvn spring-boot:run
 ### Contenido de la aplicación
 
 El utilizó Swagger para la documentación básica de los métodos y el endpoint es el siguiente:
-- [http://mutantoperation-env.eba-mhevdh3a.us-west-2.elasticbeanstalk.com/swagger-ui.html][endpoint-swagger]
+- [http://mutant-env.eba-kadczkdw.us-west-2.elasticbeanstalk.com/swagger-ui.html][endpoint-swagger]
 
 El servicio soporta los siguientes métodos:
 ##### POST /mutant/
 Determina si el arreglo de ADN es mutante o humano.
-- EndPoint: http://mutantoperation-env.eba-mhevdh3a.us-west-2.elasticbeanstalk.com/mutant/
+- EndPoint: http://mutant-env.eba-kadczkdw.us-west-2.elasticbeanstalk.com/mutant/
 
 Request del método:
 
@@ -69,7 +69,7 @@ Request del método:
 ##### GET /topsecret_split/
 Se encarga de contar el numero de humanos y mutantes que se han procesado.
 
-- EndPoint: http://mutantoperation-env.eba-mhevdh3a.us-west-2.elasticbeanstalk.com/stats
+- EndPoint: http://mutant-env.eba-kadczkdw.us-west-2.elasticbeanstalk.com/stats
 
 Respuesta del método:
 ```json
@@ -79,12 +79,21 @@ Respuesta del método:
   "ratio": 0.4
 }
 ```
+##### Coverage
+Para el reporte de coverage se utilizo Jacoco y este reporte se puede generar con el siguiente comando:
 
----
+```sh
+$ mvn clean package
+```
+
+El reporte se puede ver desde el archivo *index.html* que se encuentra en la siguiente carpeta del proyecto *target/site/jacoco/index.html*
+
+![img.png](img.png)
+
 [Java 8 SDK]: https://www.oracle.com/co/java/technologies/javase/javase-jdk8-downloads.html
 [Maven]: https://maven.apache.org/download.cgi
 [Git]: https://git-scm.com/downloads
-[endpoint-swagger]: http://quasaroperationservice-env.eba-tdqmq4ia.us-west-2.elasticbeanstalk.com/swagger-ui.html
+[endpoint-swagger]: http://mutant-env.eba-kadczkdw.us-west-2.elasticbeanstalk.com/swagger-ui.html
 
 _
 

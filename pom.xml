@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.meli.mutant</groupId>
 	<artifactId>mutant-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>mutant</name>
 	<description>New mutant recruitment operation</description>
@@ -80,9 +80,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<jvmArguments>
+					<!--<jvmArguments>
 						-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
-					</jvmArguments>
+					</jvmArguments> -->
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -101,7 +101,6 @@
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
-					<!-- attached to Maven test phase -->
 					<execution>
 						<id>report</id>
 						<phase>test</phase>
